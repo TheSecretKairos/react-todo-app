@@ -1,7 +1,23 @@
 import React from "react";
-//import { findRenderedDOMComponentWithClass } from "react-dom/cjs/react-dom-test-utils.production.min";
 import TodoItem from "./TodoItem"
-class TodosList extends React.Component {
+
+const TodosList = props => {
+    return (
+        <ul>
+            {props.todos.map(todo => (
+                <TodoItem
+                    key={todo.id}
+                    todo={todo}
+                    handleChangeProps={props.handleChangeProps}
+                    deleteTodoProps={props.deleteTodoProps}
+                    setUpdate={props.setUpdate}
+                />
+            ))}
+        </ul>
+    )
+}
+export default TodosList
+/*class TodosList extends React.Component {
     render() {
         return (
             <ul>
@@ -17,5 +33,4 @@ class TodosList extends React.Component {
             </ul>
         )
     }
-}
-export default TodosList
+}*/
